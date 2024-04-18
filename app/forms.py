@@ -13,6 +13,7 @@ class LoginForm(FlaskForm):
 
 
 class RegForm(FlaskForm):
+    usernameField = StringField('usernameField', validators=[DataRequired()])
     loginField = StringField('loginField', validators=[DataRequired()])
     passwordField = PasswordField('passwordField', validators=[DataRequired()])
     passwordConfirmField = PasswordField('passwordConfirmField', validators=[DataRequired()])
