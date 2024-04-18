@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/index.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/base.css') }}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div class="topnav">
+
+        {% if 'index' in request.url_rule.rule %}
+            <a class="active" href="/index">Home</a>
+        {% else %}
+            <a href="/index">Home</a>
+        {% endif %}
+
+        {% if 'one' in request.url_rule.rule %}
+            <a class="active" href="/one">One</a>
+        {% else %}
+            <a href="/one">One</a>
+        {% endif %}
+    
+        {% if 'two' in request.url_rule.rule %}
+            <a class="active" href="/two">Two</a>
+        {% else %}
+            <a href="/two">Two</a>
+        {% endif %}
+
+        {% if 'registration' in request.url_rule.rule %}
+            <a class="active" href="/registration">Registration</a>
+        {% else %}
+            <a href="/registration">Registration</a>
+        {% endif %}
+    </div>
+
+    <div>
+        {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        {% endwith %}
+
+        <h1>Content</h1>
+        {% block content %}
+        {% endblock %}
+
+    </div>
+    <div>
+        <h1>Footer</h1>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Hello from two page</h1>
+    <form method="POST">
+        {{ form.csrf_token }}
+        {{ form.nameField }}
+        <input type="submit" value="Ok">
+    </form>
+{% endblock %}

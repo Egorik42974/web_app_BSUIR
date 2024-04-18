@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <h1 class="a1">HELLO</h1>
+    {{ a1 }}
+
+    {% for i in cat_list %}
+        <div class="wrapper">
+            <div class="cat-img">
+                <img src="{{ url_for('static', filename='uploads/' + i.img) }}">
+            </div>
+
+
+            <div class="cat-info">
+                <div class="delete-cat">
+                    <a href="/delete-cat/{{ i.cat_id }}">x</a>
+                </div>
+                <div class="cat-text">
+                    <form method="POST" enctype="multipart/form-data" name="cat-pic" action="{{ url_for('cat_pic_upload', cat_id = i.cat_id) }}">
+                        <input type="file" name="cat-pic">
+                        <input type="submit" value="Ok">
+                    </form>
+                    <h1>{{ i.name }}</h1>
+                    <h2>FUR:{{ i.fur }}</h2>
+
+                    <p>Age of cat:{{ i.age }}</p>
+                    <p>Img : {{ i.img }}</p>
+
+
+                </div>
+
+
+                <div class="cat-btn">
+                    <button type="button">More info</button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
